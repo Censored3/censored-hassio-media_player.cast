@@ -29,7 +29,7 @@ from homeassistant.const import (
 import homeassistant.helpers.config_validation as cv
 import homeassistant.util.dt as dt_util
 
-__version__ = '1.0'
+__version__ = '1.1'
 
 DEPENDENCIES = ('cast',)
 
