@@ -227,7 +227,10 @@ async def _async_setup_platform(hass: HomeAssistantType, config: ConfigType,
         info = ChromecastInfo(host=discovery_info['host'],
                               port=discovery_info['port'])
     elif CONF_HOST in config:
-        ccport = DEFAULT_PORT if not config[CONF_PORT]
+        if CONF_PORT in config:
+            ccport = config[CONF_PORT]
+        else:
+            ccport = DEFAULT_PORT
         info = ChromecastInfo(host=config[CONF_HOST],
                               port=ccport)
 
