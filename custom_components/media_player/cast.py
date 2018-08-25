@@ -29,7 +29,7 @@ from homeassistant.const import (
 import homeassistant.helpers.config_validation as cv
 import homeassistant.util.dt as dt_util
 
-__version__ = '1.1'
+__version__ = '1.2'
 
 DEPENDENCIES = ('cast',)
 
@@ -59,7 +59,7 @@ SIGNAL_CAST_DISCOVERED = 'cast_discovered'
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_HOST): cv.string,
-    vol.Optional(CONF_PORT): cv.port,
+    vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.port,
     vol.Optional(CONF_IGNORE_CEC, default=[]): vol.All(cv.ensure_list,
                                                        [cv.string])
 })
@@ -227,12 +227,8 @@ async def _async_setup_platform(hass: HomeAssistantType, config: ConfigType,
         info = ChromecastInfo(host=discovery_info['host'],
                               port=discovery_info['port'])
     elif CONF_HOST in config:
-        if CONF_PORT in config:
-            ccport = config[CONF_PORT]
-        else:
-            ccport = DEFAULT_PORT
         info = ChromecastInfo(host=config[CONF_HOST],
-                              port=ccport)
+                              port=config[CONF_PORT])
 
     @callback
     def async_cast_discovered(discover: ChromecastInfo) -> None:
