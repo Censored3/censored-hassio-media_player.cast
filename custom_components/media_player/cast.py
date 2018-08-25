@@ -29,8 +29,6 @@ from homeassistant.const import (
 import homeassistant.helpers.config_validation as cv
 import homeassistant.util.dt as dt_util
 
-__version__ = '1.2.1'
-
 DEPENDENCIES = ('cast',)
 
 _LOGGER = logging.getLogger(__name__)
@@ -190,7 +188,7 @@ def _async_create_cast_device(hass: HomeAssistantType,
 
 async def async_setup_platform(hass: HomeAssistantType, config: ConfigType,
                                async_add_devices, discovery_info=None):
-    """Set up thet Cast platform.
+    """Set up the Cast platform.
 
     Deprecated.
     """
@@ -227,8 +225,8 @@ async def _async_setup_platform(hass: HomeAssistantType, config: ConfigType,
         info = ChromecastInfo(host=discovery_info['host'],
                               port=discovery_info['port'])
     elif CONF_HOST in config:
-        info = ChromecastInfo(host=config.get(CONF_HOST),
-                              port=config.get(CONF_PORT))
+        info = ChromecastInfo(host=config[CONF_HOST],
+                              port=config[CONF_PORT])
 
     @callback
     def async_cast_discovered(discover: ChromecastInfo) -> None:

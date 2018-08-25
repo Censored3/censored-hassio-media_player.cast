@@ -1,7 +1,7 @@
 {
     "media_player.cast": {
       "updated_at": "2018-08-21",
-      "version": "1.2.1",
+      "version": "1.2.",
       "local_location": "/custom_components/media_player/cast.py",
       "remote_location": "https://raw.githubusercontent.com/Censored3/censored-hassio-media_player.cast/master/custom_components/media_player/cast.py",
       "visit_repo": "https://github.com/Censored3/censored-hassio-media_player.cast/",
